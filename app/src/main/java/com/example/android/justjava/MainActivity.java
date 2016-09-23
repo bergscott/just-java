@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price, hasWhippedCream()));
+        displayMessage(createOrderSummary(price, hasWhippedCream(), hasChocolate(), getName()));
     }
 
     /**
@@ -57,12 +58,16 @@ public class MainActivity extends AppCompatActivity {
      * Creates a message that summarizes the order
      *
      * @param totalPrice total price of the order
-     * @param addWhippedCream true if whipped cream box was checked
+     * @param addWhippedCream true if user wants whipped cream topping
+     * @param addChocolate true if user wants chocolate topping
+     * @param name the name of the customer
      * @return message that summarizes the order
      */
-    private String createOrderSummary(int totalPrice, boolean addWhippedCream) {
-        String summary = "Name: Sailor Scott";
+    private String createOrderSummary(int totalPrice, boolean addWhippedCream,
+                                      boolean addChocolate, String name) {
+        String summary = "Name: " + name;
         summary += "\nAdd whipped cream? " + addWhippedCream;
+        summary += "\nAdd chocolate? " + addChocolate;
         summary += "\nQuantity: " + quantity;
         summary += "\nTotal: $" + totalPrice;
         summary += "\nThank you!";
@@ -77,6 +82,26 @@ public class MainActivity extends AppCompatActivity {
     private boolean hasWhippedCream() {
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_check_box);
         return whippedCreamCheckBox.isChecked();
+    }
+
+    /**
+     * Returns true if chocolate check box is checked, otherwise returns false
+     *
+     * @return state of chocolate check box
+     */
+    private boolean hasChocolate() {
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_check_box);
+        return chocolateCheckBox.isChecked();
+    }
+
+    /**
+     * Returns the name entered in the name text field EditText view
+     *
+     * @return name of the customer
+     */
+    private String getName() {
+        EditText nameEditText = (EditText) findViewById(R.id.name_text_field);
+        return nameEditText.getText().toString();
     }
 
     /**
