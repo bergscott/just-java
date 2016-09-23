@@ -41,17 +41,36 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = calculatePrice();
-        displayMessage(createOrderSummary(price, hasWhippedCream(), hasChocolate(), getName()));
+        boolean addWhippedCream = hasWhippedCream();
+        boolean addChocolate = hasChocolate();
+        int price = calculatePrice(addWhippedCream, addChocolate);
+        displayMessage(createOrderSummary(price, addWhippedCream, addChocolate,
+                       getName()));
     }
 
     /**
      * Calculates the price of the order.
      *
+     * @param addWhippedCream true if customer wants whipped cream topping
+     * @param addChocolate true if customer wants chocolate topping
      * @return price of the order
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
+        // base price is $5
+        int price = 5;
+
+        // add $1 for whipped cream if selected
+        if (addWhippedCream) {
+            price += 1;
+        }
+
+        // add $2 for chocolate if selected
+        if (addChocolate) {
+            price += 2;
+        }
+
+        // calculate total price by multiplying by quantity
+        return quantity * price;
     }
 
     /**
