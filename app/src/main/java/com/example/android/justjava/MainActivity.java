@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked.
      */
     public void increment(View view) {
-        if (quantity == 100) {
-            Toast.makeText(this, "You cannot order more than 100 coffees.",
+        int maxQuantity = 100;
+        if (quantity == maxQuantity) {
+            Toast.makeText(this, getString(R.string.max_warning, "" + maxQuantity),
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -42,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-        if (quantity == 1) {
-            Toast.makeText(this, "You cannot order less than 1 coffee.",
+        int minQuantity = 1;
+        if (quantity == minQuantity) {
+            Toast.makeText(this, getString(R.string.min_warning, "" + minQuantity),
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject, name));
         intent.putExtra(Intent.EXTRA_TEXT, createOrderSummary(price, addWhippedCream, addChocolate,
                                                               name));
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -106,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary(int totalPrice, boolean addWhippedCream,
                                       boolean addChocolate, String name) {
-        String summary = "Name: " + name;
-        summary += "\nAdd whipped cream? " + addWhippedCream;
-        summary += "\nAdd chocolate? " + addChocolate;
-        summary += "\nQuantity: " + quantity;
-        summary += "\nTotal: $" + totalPrice;
-        summary += "\nThank you!";
+        String summary = getString(R.string.order_summary_name, name);
+        summary += "\n" + getString(R.string.order_summary_whipped_cream, "" + addWhippedCream);
+        summary += "\n" + getString(R.string.order_summary_chocolate, "" + addChocolate);
+        summary += "\n" + getString(R.string.order_summary_quantity, "" + quantity);
+        summary += "\n" + getString(R.string.order_summary_price, "" + totalPrice);
+        summary += "\n" + getString(R.string.thank_you);
         return summary;
     }
 
