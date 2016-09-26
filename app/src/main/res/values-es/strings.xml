@@ -59,9 +59,10 @@
       "Just Java order for Amy" where Amy is the user's name. [CHAR LIMIT=NONE]
     -->
     <string name="email_subject">Sólo java para <xliff:g id="name" example="Amy">%s</xliff:g></string>
-    <string name="max_warning">No puede ordenar mas que <xliff:g id="max_quantity" example="100">%s</xliff:g> cafés.</string>
-    <string name="min_warning">No puede ordenar menos que <xliff:g id="min_quantity" example="1">%s</xliff:g> cafés.</string>
+    <string name="max_warning">No puede ordenar mas que <xliff:g id="max_quantity" example="100">%d</xliff:g> cafés.</string>
+    <string name="min_warning">No puede ordenar menos que <xliff:g id="min_quantity" example="1">%d</xliff:g> cafés.</string>
     <string name="default_quantity">2</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
+    <string name="quantity_display"><xliff:g id="quantity" example="2">%d</xliff:g></string>
 </resources>

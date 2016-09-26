@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         int maxQuantity = 100;
         if (quantity == maxQuantity) {
-            Toast.makeText(this, getString(R.string.max_warning, "" + maxQuantity),
+            Toast.makeText(this, getString(R.string.max_warning, maxQuantity),
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
         int minQuantity = 1;
         if (quantity == minQuantity) {
-            Toast.makeText(this, getString(R.string.min_warning, "" + minQuantity),
+            Toast.makeText(this, getString(R.string.min_warning, minQuantity),
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -109,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary(int totalPrice, boolean addWhippedCream,
                                       boolean addChocolate, String name) {
         String summary = getString(R.string.order_summary_name, name);
-        summary += "\n" + getString(R.string.order_summary_whipped_cream, "" + addWhippedCream);
-        summary += "\n" + getString(R.string.order_summary_chocolate, "" + addChocolate);
-        summary += "\n" + getString(R.string.order_summary_quantity, "" + quantity);
-        summary += "\n" + getString(R.string.order_summary_price, "" + totalPrice);
+        summary += "\n" + getString(R.string.order_summary_whipped_cream, addWhippedCream);
+        summary += "\n" + getString(R.string.order_summary_chocolate, addChocolate);
+        summary += "\n" + getString(R.string.order_summary_quantity, quantity);
+        summary += "\n" + getString(R.string.order_summary_price, totalPrice);
         summary += "\n" + getString(R.string.thank_you);
         return summary;
     }
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText(getString(R.string.quantity_display, number));
     }
 
     /**
