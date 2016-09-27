@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="HeaderTextStyle">
@@ -15,6 +17,11 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">15sp</item>
     </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 
 
 </resources>
