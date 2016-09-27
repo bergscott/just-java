@@ -30,7 +30,7 @@
     <string name="max_warning">You cannot order more than <xliff:g id="max_quantity" example="100">%d</xliff:g> coffees.</string>
 
     <!-- warning that user tried to order too few coffees -->
-    <string name="min_warning">You cannot order fewer than <xliff:g id="min_quantity" example="100">%d</xliff:g> coffee.</string>
+    <string name="min_warning">You cannot order fewer than <xliff:g id="min_quantity" example="1">%d</xliff:g> coffee.</string>
 
     <!-- subject for created email in format of: "Just Java order for Scott" where Scott is the user's name -->
     <string name="email_subject">Just Java order for <xliff:g id="name" example="Scott">%s</xliff:g></string>
